@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZZGen V1.0 - A.OMOR</title>
+    <link href="../assets/quill.snow.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/TestManager.css" rel="stylesheet">
+    <link href="../css/QuestionBlock.css" rel="stylesheet">
+    <link href="../css/AnswerBlock.css" rel="stylesheet">
+    <link href="../css/TextEditor.css" rel="stylesheet">
+    <link href="../css/ImageEditor.css" rel="stylesheet">
+    <link href="../css/ProjectHeader.css" rel="stylesheet">
+    <link href="../css/Config.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="top-bar" class="hidden">
+        <div id="project-path-display">
+            <span class="folder-icon">
+            </span>
+            <span class="path-text">C:/Users/hp/Desktop/QuizzGen 2026</span>
+        </div>
+
+        <div id="top-bar-actions">
+            <span class="top-bar-action" id="import-btn" title="Import">
+            </span>
+            <span class="top-bar-action" id="collapse-all-btn" title="Collapse All" data-collapsed="false">
+            </span>
+            <span class="top-bar-action" id="config-btn" title="Configuration">
+            </span>
+            <span class="top-bar-action" id="generate-scorm-btn" title="Generate SCORM">
+            </span>
+            <span class="top-bar-action quit-action" id="quit-btn" itle="Quit Application">
+            </span>
+        </div>
+    </div>
+
+    <div id="welcome-screen" class="">
+        <h1>QuizzGen v1.0</h1>
+        <p>A SCORM Test Generator</p>
+        <div id="welcome-actions">
+            <div id="new-test-btn">
+                <svg></svg>
+                <h3>New Test</h3>
+            </div>
+
+            <div id="open-test-btn">
+                <svg></svg>
+                <h3>Open Test</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="blocks-container" class="hidden"></div>
+
+    <button id="add-block-btn" class="hidden" aria-label="Add Block">
+    </button>
+
+    <script src="../assets/quill.min.js"></script>
+    <script type="module" src="./Main.js"></script>
+</body>
+
+</html>

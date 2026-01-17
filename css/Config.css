@@ -1,0 +1,337 @@
+/* Config Popover Styles */
+
+#config-popover {
+    position: fixed;
+    /* Fixed relative to viewport, but calculated via JS */
+    background: rgba(45, 45, 45, 0.95);
+    /* Lighter dark */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 300px;
+    /* Slightly narrower for a popover feel */
+    min-height: 150px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1001;
+    pointer-events: none;
+    /* Interactable only when visible */
+}
+
+#config-popover.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Arrow */
+#config-popover::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    /* Stick out top */
+    left: var(--arrow-left, 50%);
+    /* Dynamic position, default center */
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: rgba(45, 45, 45, 0.95);
+    /* Match main background */
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+}
+
+.config-header h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.config-close-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 2px;
+    border-radius: 4px;
+    display: none;
+    /* Optional */
+}
+
+.config-close-btn:hover {
+    color: #fff;
+}
+
+.config-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Increased gap */
+    font-size: 0.9rem;
+    padding: 0 5px;
+}
+
+/* Parameter Row */
+.config-parameter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parameter-label {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.parameter-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Parameter Input */
+.parameter-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #fff;
+    padding: 2px 6px;
+    width: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.parameter-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.parameter-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: transparent;
+    border-color: transparent;
+}
+
+/* Switch (Checkbox) */
+.parameter-switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    margin-bottom: 0;
+    /* Override default label margins */
+}
+
+.parameter-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Off state */
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #aaa;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #4CAF50;
+    /* Active Color (Green) */
+}
+
+input:checked+.slider:before {
+    transform: translateX(16px);
+    background-color: #fff;
+}
+
+/* Round Slider */
+.slider.round {
+    border-radius: 20px;
+}
+
+/* Parameter Expansion */
+.parameter-expansion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 0;
+}
+
+.parameter-expansion.expanded {
+    max-height: 500px;
+    /* Arbitrary large max-height */
+    opacity: 1;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.parameter-sub-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.parameter-sub-row label {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 2px;
+}
+
+.parameter-sub-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.parameter-sub-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.parameter-sub-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Parameter Status */
+.parameter-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    /* Default disconnected */
+}
+
+.parameter-status.connected {
+    color: #4CAF50;
+    /* Green */
+}
+
+.parameter-status.disconnected {
+    color: #666;
+    /* Gray */
+}
+
+.parameter-status-text {
+    font-size: 0.8rem;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.parameter-status-text.connected {
+    color: #4CAF50;
+}
+
+.parameter-status-text.disconnected {
+    color: #888;
+}
+
+/* Parameter Action Buttons */
+.parameter-action-btn {
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.parameter-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.parameter-action-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.parameter-action-btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Parameter Select */
+.parameter-select {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.parameter-select:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.parameter-select option {
+    background: #333;
+    color: #fff;
+}
+
+.parameter-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: transparent;
+    border-color: transparent;
+}
