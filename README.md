@@ -46,4 +46,4 @@ npm start
 
 ## Author
 
-A.OMOR
+A.OMOR AKA Kernel_Goat
