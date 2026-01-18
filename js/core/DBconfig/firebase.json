@@ -1,10 +1,11 @@
 {
-    "apiKey": "AIzaSyC-UCWhjTS2gJ0u5exYXnfOQzA90sGTBrY",
-    "authDomain": "qcms-b0fbd.firebaseapp.com",
-    "databaseURL": "https://qcms-b0fbd.firebaseio.com",
-    "projectId": "qcms-b0fbd",
-    "storageBucket": "qcms-b0fbd.appspot.com",
-    "messagingSenderId": "1036145124440",
-    "appId": "1:1036145124440:web:a43eedd0367be056e5d62d",
-    "measurementId": "G-84HGQVZ7C0"
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": "",
+    "measurementId": ""
+
 }
